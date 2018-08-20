@@ -1,0 +1,7 @@
+.ServicesSegment .cards{
+    justify-content: center;
+}
+
+.ServicesSegment * {
+    color: grey !important;
+}

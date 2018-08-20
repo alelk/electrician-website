@@ -1,0 +1,23 @@
+.StatisticSegment {
+    text-align: center;
+}
+.StatisticSegment .cards{
+    justify-content: center;
+}
+
+.StatisticSegment * {
+    color: grey !important;
+}
+
+.StatisticSegment i {
+    margin: 1em !important;
+}
+
+.StatisticSegment .cards>.card {
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.StatisticSegment .cards>.card .content {
+    border: none !important;
+}
