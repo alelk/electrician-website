@@ -14,11 +14,14 @@
   },
   "devDependencies": {
     "react-scripts": "1.1.4",
-    "gh-pages": "^1.2.0"
+    "gh-pages": "^1.2.0",
+    "netlify-cli": "^1.2.3"
   },
   "scripts": {
     "predeploy": "REACT_APP_BASE_NAME='/electrician-website/' npm run build",
+    "predeploy:netlify": "npm run build",
     "deploy": "gh-pages -d build",
+    "deploy:netlify": "npm run predeploy:netlify && netlify deploy -p build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
