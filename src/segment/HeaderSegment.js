@@ -12,7 +12,7 @@ import {Container, Visibility, Header, Icon, Segment, Button} from 'semantic-ui-
 class HeaderSegment extends React.Component {
 
   render() {
-    const {menu, phoneNumber, onHeaderVisible, onHeaderHide} = this.props;
+    const {menu, phoneNumber, onHeaderVisible, onHeaderHide, mobile, directionUrl} = this.props;
     return (
       <Segment className="HeaderSegment" inverted textAlign="center"
                style={{minHeight: 900, padding: '1em 0'}}>
@@ -20,7 +20,7 @@ class HeaderSegment extends React.Component {
         <Visibility onBottomPassed={onHeaderHide} onBottomVisible={onHeaderVisible} once={false}>
           {menu && <Container>{menu}</Container>}
           <Container text className='companyInfo'>
-            <Header as='h1' content="Услуги электромонтажа" inverted style={{fontSize: '3em'}}/>
+            <Header as='h1' content="Услуги электромонтажа" inverted style={{fontSize: mobile ? '200%' : '3em'}}/>
             <Header as='h2' content="пгт. Кикнур" inverted/>
             <Header as='a' inverted style={{marginTop: '2em'}} href={`tel:${phoneNumber}`}>
               <Icon name='phone'/>{phoneNumber}
@@ -28,6 +28,9 @@ class HeaderSegment extends React.Component {
             <Button as='a' color='yellow' size='huge' basic href={`tel:${phoneNumber}`}>
               Позвоните прямо сейчас и получите замер, консультацию и составление сметы в подарок.
             </Button>
+            {directionUrl && (
+              <a href={directionUrl} style={{fontSize: '1.1em'}}><Icon name='location arrow'/>Проложить маршрут</a>
+            )}
           </Container>
         </Visibility>
       </Segment>
@@ -40,6 +43,8 @@ HeaderSegment.propTypes = {
   companyLocation : PropTypes.string,
   phoneNumber : PropTypes.string,
   onHeaderVisible: PropTypes.func,
-  onHeaderHide: PropTypes.func
+  onHeaderHide: PropTypes.func,
+  directionUrl: PropTypes.string,
+  mobile: PropTypes.bool
 };
 export default HeaderSegment;

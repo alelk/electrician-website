@@ -7,7 +7,6 @@ import React from 'react';
 import PropTypes from 'prop-types'
 import {Button, Menu, Icon} from 'semantic-ui-react'
 import {Link} from 'react-router-dom'
-import {contacts} from "../data/company";
 
 const renderMenuItem = (item, key, onItemSelected) => (
   <Menu.Item as={Link} to={item.link} key={key} onClick={onItemSelected && (() => onItemSelected(item.link, item))}>
@@ -15,7 +14,7 @@ const renderMenuItem = (item, key, onItemSelected) => (
   </Menu.Item>
 );
 
-const SiteMenu = ({menu, fixed, inverted, homeLink, onMenuButtonClick, onItemSelected, vertical, style, showContacts}) => {
+const SiteMenu = ({menu, fixed, inverted, homeLink, onMenuButtonClick, onItemSelected, vertical, style, phoneNumber, directionUrl}) => {
   return (
     <Menu fixed={fixed ? 'top' : undefined} size='huge' inverted={inverted} vertical={vertical} style={style}>
       {homeLink && (
@@ -31,10 +30,14 @@ const SiteMenu = ({menu, fixed, inverted, homeLink, onMenuButtonClick, onItemSel
         </Button>
       )}
       {menu && menu.map((item, key) => renderMenuItem(item, key, onItemSelected))}
-      {showContacts && (
+      {(phoneNumber || directionUrl) && (
         <Menu.Item position="right">
-          <a href={`tel:${contacts.phoneNumber}`}><Icon name='phone'/>{contacts.phoneNumber}</a>
-          <a href={contacts.getDirectionUrl} style={{marginLeft: '2em'}}><Icon name='location arrow'/>Проложить маршрут</a>
+          {phoneNumber && (
+            <a href={`tel:${phoneNumber}`}><Icon name='phone'/>{phoneNumber}</a>
+          )}
+          {directionUrl && (
+            <a href={directionUrl} style={{marginLeft: '2em'}}><Icon name='location arrow'/>Проложить маршрут</a>
+          )}
         </Menu.Item>
       )}
     </Menu>
@@ -52,6 +55,7 @@ SiteMenu.propTypes = {
   onMenuButtonClick: PropTypes.func,
   onItemSelected : PropTypes.func,
   style: PropTypes.object,
-  showContacts: PropTypes.bool
+  phoneNumber: PropTypes.string,
+  directionUrl: PropTypes.string
 };
 export default SiteMenu;
