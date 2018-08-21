@@ -7,7 +7,7 @@ import './StatisticSegment.css'
 
 import React from 'react'
 import PropTypes from 'prop-types'
-import {Container, Header, Icon, Segment, Card} from 'semantic-ui-react'
+import {Container, Header, Icon, Card} from 'semantic-ui-react'
 
 const mapStatistics = (statistic, key) => {
   const {iconName, header, description} = statistic;

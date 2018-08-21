@@ -87,20 +87,26 @@ class App extends Component {
         {mobile ? (
           <React.Fragment>
             <SiteMenu {...contacts} onMenuButtonClick={this.toggleSideNavigationVisibility} inverted
-                      style={{margin: "0"}} showContacts/>
+                      style={{margin: "0"}} directionUrl={undefined}/>
             <SideNavigation menu={headerMenu}
                             visible={this.state.isSideNavigationVisible}
                             onItemSelected={this.onSideNavigationHide}>
-              <HeaderSegment {...contacts} ref = {divRef => this.componentRefs.header = divRef}/>
+              <HeaderSegment {...contacts} ref = {divRef => this.componentRefs.header = divRef}
+                             directionUrl={contacts.getDirectionUrl} mobile/>
               {this.renderBody()}
             </SideNavigation>
           </React.Fragment>
         ) : (
           <React.Fragment>
-            {!this.state.isHeaderVisible && <SiteMenu homeLink="/" fixed menu={headerMenu} showContacts/>}
+            {!this.state.isHeaderVisible && (
+              <SiteMenu homeLink="/" fixed menu={headerMenu} phoneNumber={contacts.phoneNumber}
+                        directionUrl={contacts.getDirectionUrl}/>
+            )}
             <HeaderSegment ref = {divRef => this.componentRefs.header = divRef}
                            menu={
-                             <SiteMenu homeLink="/" menu={headerMenu} inverted style={{backgroundColor: 'transparent'}} showContacts/>}
+                             <SiteMenu homeLink="/" menu={headerMenu} inverted style={{backgroundColor: 'transparent'}}
+                                       phoneNumber={contacts.phoneNumber} directionUrl={contacts.getDirectionUrl}/>
+                           }
                            onHeaderVisible={this.onHeaderShow}
                            onHeaderHide={this.onHeaderHide}
                            {...contacts}

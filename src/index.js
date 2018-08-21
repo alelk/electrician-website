@@ -9,7 +9,7 @@ import 'semantic-ui-css/semantic.min.css';
 
 ReactDOM.render((
   <BrowserRouter basename={process.env.REACT_APP_BASE_NAME}>
-    <Route path="/" component={RootComponent}/>
+    <Route exact path="/" component={RootComponent}/>
   </BrowserRouter>
 ), document.getElementById('root'));
 registerServiceWorker();

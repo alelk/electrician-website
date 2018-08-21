@@ -23,7 +23,7 @@ class ServicesSegment extends React.Component {
     render() {
         const {services} = this.props;
         return (
-            <Container textAlign='center' raised className="ServicesSegment" style={{margin: '8em 0 8em 0'}}>
+            <Container textAlign='center' className="ServicesSegment" style={{margin: '8em 0 8em 0'}}>
                 <Header as='h1'>Наши услуги</Header>
                 <Container textAlign="center">
                     <Card.Group style={{margin: '4em 0 4em 0'}}>
